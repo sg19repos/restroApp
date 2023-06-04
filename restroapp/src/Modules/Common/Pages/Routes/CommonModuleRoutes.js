@@ -1,6 +1,3 @@
-// Cannot use RouteTypes constant because it is not initialized first
-// import { LandingPagePath } from "../Constants";
-
 export const SubmitOTPPage = "submitOtp";
 export const ClosePopUpPage = "closePopUp";
 export const OAuth2ConsentPage = "oAuth2Consent";
@@ -55,11 +52,6 @@ const CommonModuleRoutes = [
     title: "Submit OTP",
     path: SubmitOTPPage,
   },
-  // {
-  //   type: RouteTypes.Login,
-  //   title: "Dashboard",
-  //   path: LandingPagePath
-  // },
   {
     type: RouteTypes.Logout,
     title: LoginPage,
