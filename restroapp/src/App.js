@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LayoutContainer from "./Modules/Common/Pages/LayoutContainer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import "./App.css";
+// import GlobalCSS from "../src/GlobalTheme";
+import RoutesTemp from "./Routes";
+// import SecondPage from "./Modules/Consigner/Pages/Secondpage";
 
 function App() {
+  // GlobalCSS();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* {window.location.pathname !== "/" ? <Header /> : null} */}
+      <LayoutContainer>
+        <RoutesTemp />
+      </LayoutContainer>
+      {/* <Switch>
+        <Route path="/">
+          <LayoutContainer />
+        </Route>
+        <Route path="/home">
+          <LayoutContainer />
+        </Route>
+        <Route path="/secondpage">
+          <SecondPage />
+        </Route>
+      </Switch>*/}
+    </Router>
   );
 }
 

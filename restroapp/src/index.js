@@ -1,13 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Store from "./Common/Store/Store";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const theme = createTheme({
+  typography: {
+    fontFamily: "Poppins",
+  },
+  fontSize: {
+    font075: "0.75rem !important",
+  },
+  palette: {
+    primary: {
+      // main: "#165788",
+      main: "#595a9b",
+      contrastText: "#fff",
+    },
+  },
+  multilineColor: {
+    color: "red !important",
+  },
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Provider store={Store}>
+        <App />{" "}
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
