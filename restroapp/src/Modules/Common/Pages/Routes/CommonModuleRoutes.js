@@ -4,7 +4,7 @@ export const OAuth2ConsentPage = "oAuth2Consent";
 export const WorkInProgressPage = "wip";
 export const InformationCapturePage = "informationForm";
 export const LogoutPage = "logout";
-export const ModeSelectionPage = "/";
+export const Home = "/";
 export const SearchPage = "search";
 export const AccountPage = "account";
 export const LoginPage = "login";
@@ -25,17 +25,17 @@ const CommonModuleRoutes = [
   {
     type: RouteTypes.Login,
     title: "Landing",
-    path: ModeSelectionPage,
+    path: Home,
   },
   {
     type: RouteTypes.Login,
     title: "Login",
-    path: ModeSelectionPage,
+    path: Home,
   },
   {
     type: RouteTypes.Login,
     title: "Home",
-    path: ModeSelectionPage,
+    path: Home,
   },
   {
     type: RouteTypes.Login,
@@ -85,7 +85,7 @@ const CommonModuleRoutes = [
   {
     type: RouteTypes.Login,
     title: "DefaultWIP",
-    path: ModeSelectionPage,
+    path: Home,
   },
   {
     type: RouteTypes.Logout,
