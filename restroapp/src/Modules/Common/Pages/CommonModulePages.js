@@ -7,7 +7,7 @@ const CommonModulePages = ({ page }) => {
     case LandingPagePath:
       return <LandingPage />;
     default:
-      return <>Test4</>;
+      return <LandingPage />;
   }
 };
 
