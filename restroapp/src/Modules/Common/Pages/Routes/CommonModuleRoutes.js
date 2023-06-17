@@ -11,12 +11,26 @@ export const LoginPage = "login";
 export const SignUpPage = "signup";
 export const LandingPagePath = "home";
 
+/**
+ * Test routes - start
+ */
+export const ItemDetailsPath = "itemDetails";
+/**
+ * Test routes - end
+ */
+
 export const RouteTypes = {
   Login: "LoggedIn",
   Logout: "LoggedOut",
   Common: "Common",
 };
 const CommonModuleRoutes = [
+  {
+    type: RouteTypes.Login,
+    title: "Item details page",
+    path: ItemDetailsPath,
+    showNavBar: true,
+  },
   {
     type: RouteTypes.Login,
     title: "LandingPage title",
@@ -26,6 +40,7 @@ const CommonModuleRoutes = [
     type: RouteTypes.Login,
     title: "Landing",
     path: Home,
+    showNavBar: false,
   },
   {
     type: RouteTypes.Login,
