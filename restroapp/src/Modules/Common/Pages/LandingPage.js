@@ -1,5 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const LandingPage = () => {
-  return "Landing pages test 29";
+  return (
+    <Link to="/itemDetails" variant="body2">
+      Go to item
+    </Link>
+  );
 };
