@@ -4,19 +4,26 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Store from "./Common/Store/Store";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Provider } from "react-redux";
+import { styled } from "@mui/system";
+import { Grid } from "@mui/material";
+import { GlobalThemes } from "./Themes/GlobalThemes";
 
-const theme = createTheme({});
+const StyledLayoutContainer = styled(
+  Grid,
+  {}
+)({
+  ...GlobalThemes,
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <StyledLayoutContainer>
       <Provider store={Store}>
         <App />
       </Provider>
-    </ThemeProvider>
+    </StyledLayoutContainer>
   </React.StrictMode>
 );
 

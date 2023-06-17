@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LayoutContainer from "./Modules/Common/Pages/LayoutContainer";
 import { BrowserRouter as Router } from "react-router-dom";
-// import "./App.css";
-import GlobalCSS from "../src/GlobalTheme";
 import RoutesTemp from "./Routes";
+import TopNavBar from "./Common/UIElements/atoms/TopNavigationBar";
+import CommonModuleRoutes from "./Modules/Common/Pages/Routes/CommonModuleRoutes";
 
 function App() {
-  // GlobalCSS();
+  const [showNavBar, setShowNavBar] = useState(true);
+
+  useEffect(() => {
+    let routeElement = CommonModuleRoutes.find((element) => {
+      return element.path === window.location.pathname.split("/")?.[1];
+    });
+    setShowNavBar(routeElement?.showNavBar);
+  }, [window.location.pathname]);
+
   return (
     <Router>
-      {/* {window.location.pathname !== "/" ? <Header /> : null} */}
-      <GlobalCSS className={"mainBackground"}>
-        <LayoutContainer>
+      <LayoutContainer>
+        {showNavBar && <TopNavBar sx={{ height: "10vh" }} />}
+        <div
+          style={{
+            height: showNavBar ? "90vh" : "100vh",
+            marginTop: showNavBar ? "1.8rem" : "",
+          }}
+        >
           <RoutesTemp />
-        </LayoutContainer>
-      </GlobalCSS>
+        </div>
+      </LayoutContainer>
     </Router>
   );
 }
