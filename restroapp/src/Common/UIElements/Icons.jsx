@@ -6,6 +6,7 @@ import ArrowBack from "@mui/icons-material/ArrowBack";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDiningOutlinedIcon from "@mui/icons-material/LocalDiningOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 
 const IconComponent = ({ name, ...rest }) => {
   const getIcon = (iconName) => {
@@ -22,6 +23,8 @@ const IconComponent = ({ name, ...rest }) => {
         return <AccountCircleIcon />;
       case "LocalDiningOutlinedIcon":
         return <LocalDiningOutlinedIcon />;
+      case "SearchIcon":
+        return <SearchIcon />;
       case "edit":
         return "edit";
       case "delete":

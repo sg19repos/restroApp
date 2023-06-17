@@ -1,13 +1,22 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
-import { ArrowBack } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 import IconComponent from "../Icons";
 
 const TopNavBar = () => {
+  const navigate = useNavigate();
+  const handleIconClick = () => {
+    navigate("/");
+  };
   return (
     <AppBar position="absolute" elevation={0} color={"transparent"}>
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="back">
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="back"
+          onClick={handleIconClick}
+        >
           <IconComponent
             name="ArrowBackIcon"
             sx={{
