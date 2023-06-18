@@ -1,22 +1,13 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 
 export const Currency = ({ amount, fontSize }) => {
-  const currencySymbol = (
-    <Typography variant="body2" className={"currency-symbol"}>
-      ₹
-    </Typography>
-  );
+  const currencySymbol = <span className={"currency-symbol"}>₹</span>;
   return (
     <>
       {currencySymbol}
-      <Typography
-        variant="body2"
-        sx={{ fontSize: fontSize }}
-        className={"list-item-font"}
-      >
+      <span style={{ fontSize: fontSize }} className={"list-item-font"}>
         {amount}
-      </Typography>
+      </span>
     </>
   );
 };

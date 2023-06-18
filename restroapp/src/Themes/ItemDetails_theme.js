@@ -1,3 +1,11 @@
+import {
+  currencySymbol,
+  GlobalFont,
+  GlobalFontColor,
+  GlobalThemeColor,
+  themeColor,
+} from "./GlobalThemes";
+
 const ItemImage = {
   height: "50%",
   width: "100%",
@@ -11,12 +19,6 @@ const ItemTitle = {
   paddingBottom: "0.5rem",
 };
 
-const themeColor = "#774936";
-const GlobalFont = { fontFamily: "Poppins !important" };
-const GlobalThemeColor = { backgroundColor: themeColor };
-const GlobalFontColor = {
-  color: themeColor,
-};
 const LightFontColor = {
   color: "#495057",
 };
@@ -38,34 +40,11 @@ const ListItemFont = {
   fontSize: "0.8rem",
 };
 
-const currencySymbol = {
-  color: "#495057",
-  fontSize: "0.8rem",
-};
-
 const navBarIconsAlignment = {
   icons: {
     display: "flex",
     alignItems: "center",
   },
-};
-
-const loadingImage = {
-  display: "flex",
-  alignItems: "center",
-  height: "100vh",
-  marginLeft: "15%",
-};
-
-const centerContainer = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100vh",
-};
-const centerImage = {
-  maxWidth: "100%",
-  maxHeight: "100%",
 };
 
 export const ThemeItemDetails = {
@@ -79,7 +58,7 @@ export const ThemeItemDetails = {
   ".light-font": { ...LightFontColor },
   ".list-item-font": { ...ListItemFont },
   ".currency-symbol": { ...currencySymbol },
-  ".global-theme-color": { ...themeColor },
+  ".global-theme-color": { ...GlobalThemeColor },
   ".global-font-color": { ...GlobalFontColor },
   ".navbar-icons-alignment": { ...navBarIconsAlignment },
   ".search-container": {
@@ -154,30 +133,21 @@ export const ThemeItemDetails = {
   ".align-center": {
     align: "center",
   },
-  ".loading-container": {
+  ".loading-page-container": {
+    backgroundColor: "#774936",
+    minHeight: "100vh",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#fff",
-    transition: "opacity 0.5s ease-out", // Add fade-out transition
-    opacity: 1, // Initial opacity
+    justifyContent: "center",
+    transition: "opacity 0.5s ease-out",
+    opacity: 1,
   },
   ".fade-out": {
     opacity: 0, // Fade-out opacity
   },
-  ".image-container": {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  ".image": {
-    maxWidth: "100%",
-    maxHeight: "100%",
-  },
-  ".loading-image": { ...loadingImage },
-  ".center-container": { ...centerContainer },
-  ".center-image": {
-    ...centerImage,
+  ".loading-image": {
+    width: "200px",
+    height: "200px",
+    padding: "20% 0%",
   },
 };

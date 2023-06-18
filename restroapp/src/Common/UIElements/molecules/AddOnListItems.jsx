@@ -40,7 +40,7 @@ const AddOnItemList = () => {
             disableTypography
             className={"list-item-font"}
           />
-          <Currency amount={item.price} fontSize={"0.5rem"} />
+          <Currency amount={item.price} fontSize={"0.75rem"} />
           <Checkbox
             size={"small"}
             sx={{

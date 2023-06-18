@@ -9,7 +9,9 @@ const ImageComponent = (imageProps) => {
       alt={name}
       height={height}
       width={width}
-      className={roundedCorners ? "img-rounded-corner" : className}
+      className={`${
+        roundedCorners ? className + " img-rounded-corner" : className
+      }`}
     />
   );
 };

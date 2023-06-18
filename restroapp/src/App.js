@@ -4,8 +4,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import LoadingPage from "./Modules/Common/Pages/LoadingPage";
 
 function App() {
-  const [showLoading, setShowLoading] = useState(false);
-  const [showHomePage, setShowHomePage] = useState(true);
+  const [showLoading, setShowLoading] = useState(true);
+  const [showHomePage, setShowHomePage] = useState(false);
 
   const handleNextPage = () => {
     setShowLoading(false);
@@ -13,7 +13,7 @@ function App() {
   };
   return (
     <Router>
-      {/*{showLoading && <LoadingPage nextPage={handleNextPage} />}*/}
+      {showLoading && <LoadingPage nextPage={handleNextPage} />}
       {showHomePage && <LayoutContainer />}
     </Router>
   );

@@ -8,6 +8,7 @@ import IconComponent from "../../../../Common/UIElements/Icons";
 import StarRating from "../../../../Common/UIElements/atoms/Rating";
 import QuantitySelectionBtn from "../../../../Common/UIElements/molecules/QuantitySelectionBtn";
 import AddOnItemList from "../../../../Common/UIElements/molecules/AddOnListItems";
+import StickyFooter from "../../../../Common/UIElements/molecules/StickyFooter";
 
 export const ItemDetails = ({ itemProps }) => {
   let { itemTitle, itemImage, itemPriceDetails, itemDescription, itemRatings } =

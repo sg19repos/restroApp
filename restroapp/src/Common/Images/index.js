@@ -10,6 +10,9 @@ import noodles from "./others/noodles.png";
 import idly from "./others/idly.png";
 import roti from "./others/roti.png";
 import circleLogo from "../Images/logos/circleLogo.png";
+import bg1 from "./backgrounds/bg1.jpg";
+import circleLogoWhite from "../Images/logos/circleLogoWhite.png";
+import circleLogoWhite2 from "../Images/logos/circleLogoWhite2.png";
 
 // Import other index as needed
 
@@ -26,6 +29,9 @@ const ImagesList = {
   idly,
   roti,
   circleLogo,
+  circleLogoWhite,
+  circleLogoWhite2,
+  bg1,
 };
 
 export default ImagesList;

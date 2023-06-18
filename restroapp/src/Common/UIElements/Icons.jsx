@@ -7,8 +7,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDiningOutlinedIcon from "@mui/icons-material/LocalDiningOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
-const IconComponent = ({ name, ...rest }) => {
+const IconComponent = ({ name, color, ...rest }) => {
   const getIcon = (iconName) => {
     switch (iconName) {
       case "FavoriteBorderIcon":
@@ -25,6 +26,8 @@ const IconComponent = ({ name, ...rest }) => {
         return <LocalDiningOutlinedIcon />;
       case "SearchIcon":
         return <SearchIcon />;
+      case "ArrowRightIcon":
+        return <ArrowRightIcon />;
       case "edit":
         return "edit";
       case "delete":
@@ -36,7 +39,11 @@ const IconComponent = ({ name, ...rest }) => {
   };
   // return <Icon {...rest}>{name}</Icon>;
   const icon = getIcon(name);
-  return <Icon {...rest}>{icon}</Icon>;
+  return (
+    <Icon color={color} {...rest}>
+      {icon}
+    </Icon>
+  );
   // return <FavoriteBorderIcon />;
 };
 
