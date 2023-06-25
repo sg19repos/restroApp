@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  makeStyles,
-  Paper,
-  Typography,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import { Grid, Paper, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { ThemeStickyFooter } from "../../../Themes/StickyFooterTheme";
 import { Currency } from "../atoms/Currency";

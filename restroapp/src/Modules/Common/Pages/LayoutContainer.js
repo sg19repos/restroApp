@@ -9,6 +9,7 @@ import StickyFooter from "../../../Common/UIElements/molecules/StickyFooter";
 
 const LayoutContainer = () => {
   const [showNavBar, setShowNavBar] = useState(true);
+  const [showCartFooter, setShowCartFooter] = useState(false);
   const location = useLocation();
   const updatedLocation = location.pathname || window.location.pathname;
   useEffect(() => {
@@ -16,6 +17,7 @@ const LayoutContainer = () => {
       return element.path === updatedLocation?.split("/")?.[1];
     });
     setShowNavBar(routeElement?.showNavBar);
+    setShowCartFooter(routeElement?.showCartFooter);
   }, [updatedLocation]);
   return (
     <>
@@ -69,7 +71,7 @@ const LayoutContainer = () => {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <StickyFooter />
+          {showCartFooter && <StickyFooter />}
         </Grid>
       </Grid>
       {/*{!["/signup", "/login"].includes(history.location.pathname) && (*/}

@@ -8,6 +8,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDiningOutlinedIcon from "@mui/icons-material/LocalDiningOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 const IconComponent = ({ name, color, ...rest }) => {
   const getIcon = (iconName) => {
@@ -28,6 +31,12 @@ const IconComponent = ({ name, color, ...rest }) => {
         return <SearchIcon />;
       case "ArrowRightIcon":
         return <ArrowRightIcon />;
+      case "Add":
+        return <AddIcon />;
+      case "Remove":
+        return <RemoveIcon />;
+      case "RemoveCircleIcon":
+        return <RemoveCircleIcon />;
       case "edit":
         return "edit";
       case "delete":

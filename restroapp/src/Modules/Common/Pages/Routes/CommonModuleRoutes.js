@@ -15,6 +15,7 @@ export const LandingPagePath = "home";
  * Test routes - start
  */
 export const ItemDetailsPath = "itemDetails";
+export const CartPath = "cart";
 /**
  * Test routes - end
  */
@@ -30,6 +31,13 @@ const CommonModuleRoutes = [
     title: "Item details page",
     path: ItemDetailsPath,
     showNavBar: true,
+    showCartFooter: true,
+  },
+  {
+    type: RouteTypes.Login,
+    title: "Cart page",
+    path: CartPath,
+    showNavBar: true,
   },
   {
     type: RouteTypes.Login,
@@ -41,6 +49,7 @@ const CommonModuleRoutes = [
     title: "Landing",
     path: Home,
     showNavBar: false,
+    showCartFooter: true,
   },
   {
     type: RouteTypes.Login,
