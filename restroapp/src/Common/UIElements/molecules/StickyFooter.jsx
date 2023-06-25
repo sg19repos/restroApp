@@ -6,6 +6,7 @@ import { Currency } from "../atoms/Currency";
 import CircularImagePlaceholder from "../atoms/ImagePlaceHolder";
 import IconComponent from "../Icons";
 import { themeColor } from "../../../Themes/GlobalThemes";
+import { useNavigate } from "react-router-dom";
 
 const StyledFooter = styled(
   Grid,
@@ -14,6 +15,10 @@ const StyledFooter = styled(
   ...ThemeStickyFooter,
 });
 const StickyFooter = () => {
+  const navigate = useNavigate();
+  const goToCart = () => {
+    navigate("/cart");
+  };
   return (
     <StyledFooter>
       <Paper className={"footer"} elevation={12}>
@@ -66,7 +71,12 @@ const StickyFooter = () => {
             </Grid>
           </Grid>
           <Grid item xs={4}>
-            <Button className={"total-button"}>
+            <Button
+              className={"total-button"}
+              onClick={() => {
+                goToCart();
+              }}
+            >
               <Grid container direction={"column"} alignItems={"center"}>
                 <Grid item xs={12}>
                   <Currency amount={100} fontSize={"0.75rem"} />
