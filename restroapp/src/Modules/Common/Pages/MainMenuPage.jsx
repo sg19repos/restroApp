@@ -11,7 +11,8 @@ export const MainMenu = () => {
   const [searchText, setSearchText] = useState("");
   let menuItems = localStorage.getItem("menuItems");
   let menuTemp = menuItems?.length ? menuItems : MenuItems;
-  const filteredMenuItems = JSON.parse(menuTemp);
+  const filteredMenuItems =
+    typeof menuTemp === "string" ? JSON.parse(menuTemp) : menuTemp;
   /*const filteredMenuItems = menuTemp.filter((item) =>
     item.title.toLowerCase().includes(searchText.toLowerCase())
   );*/
