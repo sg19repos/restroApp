@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, InputAdornment, Grid, Paper } from "@mui/material";
 import IconComponent from "../../../Common/UIElements/Icons";
 import { useNavigate } from "react-router-dom";
 import ImageComponent from "../../../Common/UIElements/Image";
 import { MenuItems } from "../../../Constants/constants";
 import Typography from "@mui/material/Typography";
+import { getFireStoreElements } from "../../../Utils/utils";
 
 export const MainMenu = () => {
   const [searchText, setSearchText] = useState("");
-  const filteredMenuItems = MenuItems.filter((item) =>
+  let menuItems = localStorage.getItem("menuItems");
+  let menuTemp = menuItems?.length ? menuItems : MenuItems;
+  const filteredMenuItems = JSON.parse(menuTemp);
+  /*const filteredMenuItems = menuTemp.filter((item) =>
     item.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  );*/
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
+
+  useEffect(() => {
+    getFireStoreElements("menu");
+  }, []);
+
   return (
     <div className={"root"}>
       <Grid container spacing={2} direction={"column"} alignItems={"stretch"}>
