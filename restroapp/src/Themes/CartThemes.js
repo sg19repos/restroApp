@@ -1,7 +1,7 @@
 import { GlobalFont, GlobalThemeColor } from "./GlobalThemes";
 
 const Thumbnail = {
-  marginRight: "2rem",
+  marginRight: "1rem",
   width: "60px",
   height: "60px",
   borderRadius: "50%",
