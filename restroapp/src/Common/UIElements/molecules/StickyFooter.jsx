@@ -29,7 +29,7 @@ const StickyFooter = () => {
           alignItems="center"
         >
           <Grid item xs={2}>
-            <CircularImagePlaceholder />
+            <CircularImagePlaceholder name={"dosa"} />
           </Grid>
           <Grid item xs={6}>
             <Grid
@@ -79,7 +79,7 @@ const StickyFooter = () => {
             >
               <Grid container direction={"column"} alignItems={"center"}>
                 <Grid item xs={12}>
-                  <Currency amount={100} fontSize={"0.75rem"} />
+                  <Currency amount={100} fontSize={"0.75rem"} color={"#fff"} />
                 </Grid>
                 <Grid item xs={12}>
                   <Typography
