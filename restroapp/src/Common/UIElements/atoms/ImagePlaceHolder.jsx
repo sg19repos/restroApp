@@ -10,11 +10,11 @@ const StyledImagePlaceHolder = styled(
 )({
   ...ImagePlaceHolderTheme,
 });
-const CircularImagePlaceholder = () => {
+const CircularImagePlaceholder = ({ name }) => {
   return (
     <StyledImagePlaceHolder>
       <div className={"root"}>
-        <ImageComponent className={"image"} name={"dosa"} roundedCorners />
+        <ImageComponent className={"image"} name={name} roundedCorners />
       </div>
     </StyledImagePlaceHolder>
   );
