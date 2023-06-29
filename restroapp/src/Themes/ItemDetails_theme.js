@@ -36,7 +36,7 @@ const ItemDescription = {
 
 const ListItemFont = {
   color: "#495057",
-  fontFamily: "Poppins",
+  fontFamily: "Poppins !important",
   fontSize: "0.8rem",
 };
 
