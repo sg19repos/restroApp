@@ -1,6 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { GlobalFont, GlobalFontColor } from "../../../Themes/GlobalThemes";
+import {
+  GlobalFont,
+  GlobalFontColor,
+  themeColor,
+} from "../../../Themes/GlobalThemes";
 import { Currency } from "./Currency";
 
 const SubtotalTotalComponent = () => {
@@ -11,9 +15,10 @@ const SubtotalTotalComponent = () => {
   return (
     <Box
       sx={{
-        border: "1px dotted #000",
+        // border: "1px dotted #000",
+        border: `1px solid ${themeColor}`,
         borderRadius: "10px",
-        p: 2,
+        padding: "2rem 2rem",
         ...GlobalFontColor,
       }}
     >
@@ -25,7 +30,9 @@ const SubtotalTotalComponent = () => {
         <Box sx={{ flex: 1, borderBottom: "1px dotted #000" }}></Box>
 
         {/*${subTotal.toFixed(2)}*/}
-        <Currency amount={subTotal} />
+        <span style={{ paddingLeft: "1rem" }}>
+          <Currency amount={subTotal} />
+        </span>
       </Box>
 
       {/* Total section */}
@@ -35,7 +42,9 @@ const SubtotalTotalComponent = () => {
         </Typography>
         <Box sx={{ flex: 1, borderBottom: "1px dotted #000" }}></Box>
         {/*${total.toFixed(2)}*/}
-        <Currency amount={total} />
+        <span style={{ paddingLeft: "1rem" }}>
+          <Currency amount={total} />
+        </span>
       </Box>
     </Box>
   );
