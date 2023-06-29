@@ -5,8 +5,8 @@ import IconComponent from "../Icons";
 
 const TopNavBar = () => {
   const navigate = useNavigate();
-  const handleIconClick = () => {
-    navigate("/");
+  const handleIconClick = (path) => {
+    navigate(path);
   };
   return (
     <AppBar position="absolute" elevation={0} color={"transparent"}>
@@ -15,7 +15,7 @@ const TopNavBar = () => {
           edge="start"
           color="inherit"
           aria-label="back"
-          onClick={handleIconClick}
+          onClick={() => handleIconClick("/")}
         >
           <IconComponent
             name="ArrowBackIcon"
@@ -30,7 +30,12 @@ const TopNavBar = () => {
           sx={{ flexGrow: 1, textAlign: "center" }}
         ></Typography>
         <div className={"navbar-icons-alignment"}>
-          <IconButton edge="end" color="inherit" aria-label="cart">
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="cart"
+            onClick={() => handleIconClick("/cart")}
+          >
             <IconComponent
               name="LocalDiningOutlinedIcon"
               sx={{
@@ -38,7 +43,11 @@ const TopNavBar = () => {
               }}
             />
           </IconButton>
-          <IconButton color="inherit" aria-label="account">
+          <IconButton
+            color="inherit"
+            aria-label="account"
+            onClick={() => handleIconClick("/account")}
+          >
             <IconComponent
               name="AccountCircleIcon"
               sx={{
