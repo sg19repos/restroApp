@@ -11,6 +11,12 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import AccountBalanceWalletRoundedIcon from "@mui/icons-material/AccountBalanceWalletRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 
 const IconComponent = ({ name, color, ...rest }) => {
   const getIcon = (iconName) => {
@@ -37,6 +43,18 @@ const IconComponent = ({ name, color, ...rest }) => {
         return <RemoveIcon />;
       case "RemoveCircleIcon":
         return <RemoveCircleIcon />;
+      case "AddCircleIcon":
+        return <AddCircleIcon />;
+      case "FastfoodRoundedIcon":
+        return <FastfoodRoundedIcon />;
+      case "HomeRoundedIcon":
+        return <HomeRoundedIcon />;
+      case "AccountBalanceWalletRoundedIcon":
+        return <AccountBalanceWalletRoundedIcon />;
+      case "LogoutRoundedIcon":
+        return <LogoutRoundedIcon />;
+      case "KeyboardArrowRightRoundedIcon":
+        return <KeyboardArrowRightRoundedIcon />;
       case "edit":
         return "edit";
       case "delete":
