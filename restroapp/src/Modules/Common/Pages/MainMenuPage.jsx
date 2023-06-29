@@ -22,7 +22,7 @@ export const MainMenu = () => {
   };
 
   useEffect(() => {
-    getFireStoreElements("menu");
+    // getFireStoreElements("menu");
   }, []);
 
   return (
