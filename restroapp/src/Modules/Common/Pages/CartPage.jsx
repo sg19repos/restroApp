@@ -25,6 +25,7 @@ import {
 } from "../../../Themes/GlobalThemes";
 import SubtotalTotalComponent from "../../../Common/UIElements/atoms/cartTotals";
 import { Currency } from "../../../Common/UIElements/atoms/Currency";
+import { ShippingAddress } from "../../../Common/UIElements/molecules/ShippingAddress";
 
 export const CartPage = () => {
   const cartItems = [
@@ -33,7 +34,7 @@ export const CartPage = () => {
       thumbnailUrl: "https://example.com/item1.jpg",
       // title: "Item 1",
       title: "Veg biryani",
-      price: 10.99,
+      price: 60,
       quantity: 2,
     },
     {
@@ -41,7 +42,7 @@ export const CartPage = () => {
       thumbnailUrl: "https://example.com/item2.jpg",
       // title: "Item 2",
       title: "Masala Dosa",
-      price: 7.99,
+      price: 40,
       quantity: 1,
     },
   ];
@@ -82,22 +83,37 @@ export const CartPage = () => {
           variant="h5"
           align="center"
           gutterBottom
-          sx={{ ...GlobalFont, ...GlobalFontColor, paddingBottom: "4rem" }}
+          sx={{ ...GlobalFont, ...GlobalFontColor, paddingBottom: "2rem" }}
         >
           Cart
+        </Typography>
+        <Typography
+          variant="body2"
+          align="left"
+          sx={{ ...GlobalFont, ...GlobalFontColor, paddingBottom: "1rem" }}
+        >
+          Shipping address
+        </Typography>
+        <ShippingAddress address="4-4-91, 4th lane, 5th appartment, Bayyapanahalli, Bengaluru south" />
+
+        <Typography
+          variant="body2"
+          align="left"
+          sx={{ ...GlobalFont, ...GlobalFontColor, padding: "1rem 0rem" }}
+        >
+          Order summary
         </Typography>
         <Grid container spacing={2} direction={"column"} alignItems={"center"}>
           {cartItems.map((item) => (
             <Grid item xs={12} key={item.id} width={"300px"}>
               <Paper sx={ThemeCart.paper} elevation={2}>
-                {/*<ListItem sx={{ ...ThemeCart.listItem }}>*/}
                 <Grid
                   container
                   direction={"row"}
                   padding={"0.8rem"}
                   justifyContent="space-between"
                 >
-                  <Grid item xs={2}>
+                  <Grid item xs={3}>
                     <ImageComponent
                       name={"biryani"}
                       width={"100%"}
@@ -106,7 +122,7 @@ export const CartPage = () => {
                       className={"thumbnail"}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={8} sx={{ paddingLeft: "0.75rem" }}>
                     <Grid
                       container
                       direction={"column"}
@@ -120,6 +136,7 @@ export const CartPage = () => {
                             ...GlobalFont,
                             ...GlobalFontColor,
                           }}
+                          fontSize={"0.85rem"}
                         >
                           {item.title}
                         </Typography>
@@ -129,8 +146,13 @@ export const CartPage = () => {
                       </Grid>
                     </Grid>
                   </Grid>
-
-                  <IconComponent name={"RemoveCircleIcon"} color={themeColor} />
+                  <Grid item xs={1}>
+                    <IconComponent
+                      name={"RemoveCircleIcon"}
+                      color={themeColor}
+                    />
+                    <IconComponent name={"AddCircleIcon"} color={themeColor} />
+                  </Grid>
                 </Grid>
               </Paper>
             </Grid>
