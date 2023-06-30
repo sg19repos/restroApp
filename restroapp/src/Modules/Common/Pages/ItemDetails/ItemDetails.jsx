@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/system";
@@ -7,10 +7,34 @@ import ImageComponent from "../../../../Common/UIElements/Image";
 import StarRating from "../../../../Common/UIElements/atoms/Rating";
 import QuantitySelectionBtn from "../../../../Common/UIElements/molecules/QuantitySelectionBtn";
 import AddOnItemList from "../../../../Common/UIElements/molecules/AddOnListItems";
+import { useLocation, useParams } from "react-router-dom";
 
-export const ItemDetails = ({ itemProps }) => {
-  let { itemTitle, itemImage, itemPriceDetails, itemDescription, itemRatings } =
-    itemProps || {};
+export const ItemDetails = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const itemId = searchParams.get("itemId");
+  const [item, setItem] = useState({});
+
+  useEffect(() => {
+    let itemTemp = JSON.parse(localStorage.getItem("itemDetails")).find(
+      (element) => {
+        return element.itemId === itemId;
+      }
+    );
+
+    if (itemTemp) {
+      setItem(itemTemp);
+    } else {
+      let itemTemp = JSON.parse(localStorage.getItem("itemDetails")).find(
+        (element) => {
+          return element.itemId === "generalItem";
+        }
+      );
+      setItem(itemTemp);
+    }
+  }, [itemId]);
+
+  let { itemDescription, itemPrice, itemRating, itemTitle } = item || {};
 
   const StyledLayoutContainer = styled(
     Grid,
@@ -23,7 +47,7 @@ export const ItemDetails = ({ itemProps }) => {
       <Grid container>
         <Grid item xs={12} sx={{ height: "40%" }}>
           <ImageComponent
-            name={"biryani"}
+            name={itemId}
             width={"100%"}
             height={"100%"}
             roundedCorners
@@ -34,7 +58,7 @@ export const ItemDetails = ({ itemProps }) => {
             {itemTitle}
           </Typography>
           {/*<IconComponent name="FavoriteBorderIcon" />*/}
-          <StarRating value={3.5} ratingsCount={48} />
+          <StarRating value={itemRating} ratingsCount={48} />
           <Typography variant="h5" gutterBottom className={"item-sub-title"}>
             {"About"}
           </Typography>
