@@ -6,43 +6,43 @@ export const ItemDetailsProps = {
 
 export const MenuItems = [
   {
-    id: 1,
-    title: "Burger",
+    itemId: "burger",
+    itemTitle: "Burger",
     imageUrl: "burger",
   },
   {
-    id: 2,
-    title: "Biryani",
+    itemId: "biryani",
+    itemTitle: "Biryani",
     imageUrl: "biryanibowl",
   },
   {
-    id: 3,
-    title: "Thali",
+    itemId: "thali",
+    itemTitle: "Thali",
     imageUrl: "thali",
   },
   {
-    id: 4,
-    title: "Noodles",
+    itemId: "noodles",
+    itemTitle: "Noodles",
     imageUrl: "noodles",
   },
   {
-    id: 5,
-    title: "Pizza",
+    itemId: "pizza",
+    itemTitle: "Pizza",
     imageUrl: "pizza",
   },
   {
-    id: 6,
-    title: "Roti",
+    itemId: "roti",
+    itemTitle: "Roti",
     imageUrl: "roti",
   },
   {
-    id: 7,
-    title: "Dosa",
+    itemId: "dosa",
+    itemTitle: "Dosa",
     imageUrl: "dosa",
   },
   {
-    id: 8,
-    title: "Idly",
+    itemId: "idly",
+    itemTitle: "Idly",
     imageUrl: "idly",
   },
 ];
