@@ -91,7 +91,7 @@ export const MenuList = ({ filteredMenuItems }) => {
             <Grid item xs={12}>
               <Paper elevation={1} className={"menu-item"}>
                 <ImageComponent
-                  name={menuItem.imageUrl}
+                  name={menuItem.itemId}
                   width={"100%"}
                   height={"100%"}
                   roundedCorners
