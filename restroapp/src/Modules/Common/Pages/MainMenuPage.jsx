@@ -22,7 +22,7 @@ export const MainMenu = () => {
   };
 
   useEffect(() => {
-    // getFireStoreElements("menu");
+    getFireStoreElements("menu");
   }, []);
 
   return (
@@ -68,14 +68,20 @@ export const MainMenu = () => {
 
 export const MenuList = ({ filteredMenuItems }) => {
   const navigate = useNavigate();
-  const handleItemClick = () => {
-    navigate("/itemDetails");
+  const handleItemClick = (itemId) => {
+    navigate(`/itemDetails?itemId=${itemId}`);
   };
 
   return (
     <Grid container spacing={1} className={"menu-container"}>
       {filteredMenuItems.map((menuItem) => (
-        <Grid item xs={6} sm={8} key={menuItem.id} onClick={handleItemClick}>
+        <Grid
+          item
+          xs={6}
+          sm={8}
+          key={menuItem.itemId}
+          onClick={() => handleItemClick(menuItem.itemId)}
+        >
           <Grid
             container
             direction="column"
@@ -98,7 +104,7 @@ export const MenuList = ({ filteredMenuItems }) => {
                 variant="caption"
                 className={"text-align-center global-font global-font-color"}
               >
-                {menuItem.title}
+                {menuItem.itemTitle}
               </Typography>
             </Grid>
           </Grid>
