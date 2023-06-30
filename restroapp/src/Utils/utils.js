@@ -13,7 +13,7 @@ export const getFireStoreElements = (collectionName) => {
         documents.push(doc.data());
       });
 
-      localStorage.setItem("menuItems", JSON.stringify(documents));
+      localStorage.setItem(collectionName, JSON.stringify(documents));
       return documents;
     } catch (error) {
       console.error("Error retrieving documents:", error);
