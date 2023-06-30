@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { MainMenu } from "./MainMenuPage";
 import { styled } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { ThemeItemDetails } from "../../../Themes/ItemDetails_theme";
+import { getFireStoreElements } from "../../../Utils/utils";
 
 export const LandingPage = () => {
   const StyledLayoutContainer = styled(
@@ -12,6 +12,9 @@ export const LandingPage = () => {
   )({
     ...ThemeItemDetails,
   });
+  useEffect(() => {
+    getFireStoreElements("itemDetails");
+  }, []);
   return (
     <StyledLayoutContainer>
       <MainMenu />
