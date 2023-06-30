@@ -78,8 +78,8 @@ export const MenuList = ({ filteredMenuItems }) => {
           item
           xs={6}
           sm={8}
-          key={menuItem.itemId}
-          onClick={() => handleItemClick(menuItem.itemId)}
+          key={menuItem.itemName}
+          onClick={() => handleItemClick(menuItem.itemName)}
         >
           <Grid
             container
