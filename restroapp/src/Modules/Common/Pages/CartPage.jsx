@@ -26,6 +26,7 @@ import {
 import SubtotalTotalComponent from "../../../Common/UIElements/atoms/cartTotals";
 import { Currency } from "../../../Common/UIElements/atoms/Currency";
 import { ShippingAddress } from "../../../Common/UIElements/molecules/ShippingAddress";
+import { Total2 } from "../../../Common/UIElements/atoms/Totals2";
 
 export const CartPage = () => {
   const cartItems = [
@@ -142,7 +143,11 @@ export const CartPage = () => {
                         </Typography>
                       </Grid>
                       <Grid item xs={12} paddingTop={"0.25rem"}>
-                        <Currency amount={item.price} />
+                        <Currency
+                          amount={item.price}
+                          color={themeColor}
+                          fontSize={"0.8rem"}
+                        />
                       </Grid>
                     </Grid>
                   </Grid>
@@ -160,7 +165,8 @@ export const CartPage = () => {
         </Grid>
         <Grid container direction={"column"}>
           <Grid item xs={12} sx={{ margin: "2rem 0rem" }}>
-            <SubtotalTotalComponent />
+            {/*<SubtotalTotalComponent />*/}
+            <Total2 />
           </Grid>
           <Grid item xs={12} alignSelf={"center"}>
             <Button
