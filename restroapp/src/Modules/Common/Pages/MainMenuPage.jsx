@@ -9,10 +9,9 @@ import { getFireStoreElements } from "../../../Utils/utils";
 
 export const MainMenu = () => {
   const [searchText, setSearchText] = useState("");
-  let menuItems = localStorage.getItem("menuItems");
-  let menuTemp = menuItems?.length ? menuItems : MenuItems;
-  const filteredMenuItems =
-    typeof menuTemp === "string" ? JSON.parse(menuTemp) : menuTemp;
+  let menuItems = localStorage.getItem("menu");
+  let menuTemp = menuItems?.length ? JSON.parse(menuItems) : [];
+  const filteredMenuItems = typeof menuTemp === "string" ? menuTemp : menuTemp;
   /*const filteredMenuItems = menuTemp.filter((item) =>
     item.title.toLowerCase().includes(searchText.toLowerCase())
   );*/
@@ -91,7 +90,7 @@ export const MenuList = ({ filteredMenuItems }) => {
             <Grid item xs={12}>
               <Paper elevation={1} className={"menu-item"}>
                 <ImageComponent
-                  name={menuItem.itemId}
+                  name={menuItem.imageUrl}
                   width={"100%"}
                   height={"100%"}
                   roundedCorners
@@ -104,7 +103,7 @@ export const MenuList = ({ filteredMenuItems }) => {
                 variant="caption"
                 className={"text-align-center global-font global-font-color"}
               >
-                {menuItem.itemTitle}
+                {menuItem.title}
               </Typography>
             </Grid>
           </Grid>
