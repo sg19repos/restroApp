@@ -8,7 +8,7 @@ import CommonModuleRoutes from "./Modules/Common/Pages/Routes/CommonModuleRoutes
 
 import CommonModulePages from "./Modules/Common/Pages/CommonModulePages";
 
-const RoutesTemp = () => {
+const RoutesTemp = ({ cart, setCart, cartTotal, setCartTotal }) => {
   const allRoutes = [
     {
       ModulePages: CommonModulePages,
@@ -27,7 +27,15 @@ const RoutesTemp = () => {
               exact={v.exact}
               title={v.title}
               tns={v.tns}
-              element={<PagesComponent page={v.path} />}
+              element={
+                <PagesComponent
+                  page={v.path}
+                  cart={cart}
+                  setCart={setCart}
+                  cartTotal={cartTotal}
+                  setCartTotal={setCartTotal}
+                />
+              }
             />
             // <GateWay
             //   key={v.path}
