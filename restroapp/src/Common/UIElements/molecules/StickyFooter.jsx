@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Paper, Typography, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { ThemeStickyFooter } from "../../../Themes/StickyFooterTheme";
@@ -14,11 +14,31 @@ const StyledFooter = styled(
 )({
   ...ThemeStickyFooter,
 });
-const StickyFooter = () => {
+const StickyFooter = ({ cart, setCart, cartTotal, setCartTotal }) => {
   const navigate = useNavigate();
   const goToCart = () => {
     navigate("/cart");
   };
+  useEffect(() => {
+    let cartTotalTemp = 0;
+    cart &&
+      Object.keys(cart)?.length &&
+      Object.keys(cart)?.forEach((element) => {
+        cartTotalTemp +=
+          cart?.[element]?.itemPrice * (cart?.[element]?.quantity || 1);
+      });
+    setCartTotal(cartTotalTemp);
+  }, [cart]);
+
+  let cartItemsList =
+    cart && Object.keys(cart)?.length
+      ? Object.keys(cart)
+          ?.map((element) => {
+            return cart[element]?.itemTitle;
+          })
+          ?.join(", ")
+      : "Empty cart";
+
   return (
     <StyledFooter>
       <Paper className={"footer"} elevation={12}>
@@ -44,7 +64,7 @@ const StickyFooter = () => {
                   fontSize={"0.65rem"}
                   className={"text-align-center global-font"}
                 >
-                  Veg biryani
+                  {cartItemsList}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -79,7 +99,11 @@ const StickyFooter = () => {
             >
               <Grid container direction={"column"} alignItems={"center"}>
                 <Grid item xs={12}>
-                  <Currency amount={100} fontSize={"0.75rem"} color={"#fff"} />
+                  <Currency
+                    amount={cartTotal}
+                    fontSize={"0.75rem"}
+                    color={"#fff"}
+                  />
                 </Grid>
                 <Grid item xs={12}>
                   <Typography
