@@ -15,7 +15,7 @@ const TopNavBar = () => {
           edge="start"
           color="inherit"
           aria-label="back"
-          onClick={() => handleIconClick("/")}
+          onClick={() => handleIconClick("/home")}
         >
           <IconComponent
             name="ArrowBackIcon"
@@ -47,6 +47,7 @@ const TopNavBar = () => {
             color="inherit"
             aria-label="account"
             onClick={() => handleIconClick("/account")}
+            sx={{ marginLeft: "1rem" }}
           >
             <IconComponent
               name="AccountCircleIcon"
