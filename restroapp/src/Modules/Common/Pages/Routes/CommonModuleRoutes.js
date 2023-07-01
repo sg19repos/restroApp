@@ -50,12 +50,14 @@ const CommonModuleRoutes = [
     type: RouteTypes.Login,
     title: "LandingPage title",
     path: LandingPagePath,
+    showNavBar: true,
+    showCartFooter: true,
   },
   {
     type: RouteTypes.Login,
     title: "Landing",
     path: Home,
-    showNavBar: false,
+    showNavBar: true,
     showCartFooter: true,
   },
   {
