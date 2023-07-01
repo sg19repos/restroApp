@@ -9,7 +9,7 @@ import QuantitySelectionBtn from "../../../../Common/UIElements/molecules/Quanti
 import AddOnItemList from "../../../../Common/UIElements/molecules/AddOnListItems";
 import { useLocation, useParams } from "react-router-dom";
 
-export const ItemDetails = () => {
+export const ItemDetails = ({ cart, setCart }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const itemId = searchParams.get("itemId");
@@ -76,7 +76,12 @@ export const ItemDetails = () => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <QuantitySelectionBtn price={99.9} />
+          <QuantitySelectionBtn
+            cart={cart}
+            price={itemPrice}
+            setCart={setCart}
+            item={item}
+          />
         </Grid>
       </Grid>
     </StyledLayoutContainer>
