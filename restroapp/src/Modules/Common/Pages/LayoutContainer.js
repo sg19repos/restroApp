@@ -10,6 +10,8 @@ import StickyFooter from "../../../Common/UIElements/molecules/StickyFooter";
 const LayoutContainer = () => {
   const [showNavBar, setShowNavBar] = useState(true);
   const [showCartFooter, setShowCartFooter] = useState(false);
+  const [cart, setCart] = useState({});
+  const [cartTotal, setCartTotal] = useState(0);
   const location = useLocation();
   const updatedLocation = location.pathname || window.location.pathname;
   useEffect(() => {
@@ -65,13 +67,25 @@ const LayoutContainer = () => {
             {/*<CarrierList />*/}
             {/*<ViewCarrier />*/}
             {/*<ModeSelection />*/}
-            <RoutesTemp />
+            <RoutesTemp
+              cart={cart}
+              setCart={setCart}
+              cartTotal={cartTotal}
+              setCartTotal={setCartTotal}
+            />
             {/*{children}*/}
             {/*{<OrderPreview />}*/}
           </Box>
         </Grid>
         <Grid item xs={12}>
-          {showCartFooter && <StickyFooter />}
+          {showCartFooter && (
+            <StickyFooter
+              cart={cart}
+              setCart={setCart}
+              cartTotal={cartTotal}
+              setCartTotal={setCartTotal}
+            />
+          )}
         </Grid>
       </Grid>
       {/*{!["/signup", "/login"].includes(history.location.pathname) && (*/}
