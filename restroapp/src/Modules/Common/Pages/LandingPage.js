@@ -12,6 +12,7 @@ export const LandingPage = () => {
   )({
     ...ThemeItemDetails,
   });
+
   useEffect(() => {
     getFireStoreElements("itemDetails");
   }, []);
