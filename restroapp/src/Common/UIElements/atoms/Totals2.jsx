@@ -9,7 +9,8 @@ import { Currency } from "./Currency";
 import { ThemeCart } from "../../../Themes/CartThemes";
 import { Box } from "@mui/system";
 
-export const Total2 = () => {
+export const Total2 = ({ totalAmount }) => {
+  const discount = 100;
   return (
     <Paper sx={ThemeCart.paper} elevation={2}>
       <Grid
@@ -46,7 +47,11 @@ export const Total2 = () => {
               </Typography>
             </Grid>
             <Grid item xs={5} sx={{ paddingLeft: "2rem" }}>
-              <Currency amount={200} color={themeColor} fontSize={"0.8rem"} />
+              <Currency
+                amount={totalAmount}
+                color={themeColor}
+                fontSize={"0.8rem"}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -103,7 +108,12 @@ export const Total2 = () => {
               </Typography>
             </Grid>
             <Grid item xs={5} sx={{ paddingLeft: "2rem" }}>
-              <Currency amount={100} color={themeColor} fontSize={"0.8rem"} />
+              <Currency
+                // amount={totalAmount - discount}
+                amount={totalAmount}
+                color={themeColor}
+                fontSize={"1rem"}
+              />
             </Grid>
           </Grid>
         </Grid>
