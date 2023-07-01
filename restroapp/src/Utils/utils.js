@@ -32,3 +32,50 @@ export const getFireStoreElements = (collectionName) => {
       console.error("Error:", error);
     });
 };
+
+export const handleAddItem = (item, quantity, setCart) => {
+  setCart((prevState) => {
+    if (quantity === 0) {
+      delete prevState?.[item.itemId];
+      return {
+        ...prevState,
+      };
+    }
+    return {
+      ...prevState,
+      [item.itemId]: { ...item, quantity: quantity },
+    };
+  });
+};
+
+export const handleAlterCart = (item, action, setCart, setCartTotal) => {
+  if (action === "decrease") {
+    setCart((prevState) => {
+      if (
+        prevState?.[item?.itemId]?.quantity &&
+        prevState?.[item?.itemId]?.quantity <= 1
+      ) {
+        const { [item.itemId]: p, ...rest } = prevState;
+        return rest;
+      } else {
+        return {
+          ...prevState,
+          [item.itemId]: {
+            ...item,
+            quantity: prevState?.[item?.itemId]?.quantity - 1,
+          },
+        };
+      }
+    });
+  } else if (action === "increase") {
+    setCart((prevState) => {
+      return {
+        ...prevState,
+        [item.itemId]: {
+          ...item,
+          quantity: prevState?.[item?.itemId]?.quantity + 1,
+        },
+      };
+    });
+  }
+};
