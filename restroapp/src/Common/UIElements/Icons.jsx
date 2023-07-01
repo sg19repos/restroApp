@@ -17,6 +17,8 @@ import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import AccountBalanceWalletRoundedIcon from "@mui/icons-material/AccountBalanceWalletRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 
 const IconComponent = ({ name, color, ...rest }) => {
   const getIcon = (iconName) => {
@@ -55,6 +57,10 @@ const IconComponent = ({ name, color, ...rest }) => {
         return <LogoutRoundedIcon />;
       case "KeyboardArrowRightRoundedIcon":
         return <KeyboardArrowRightRoundedIcon />;
+      case "AddBoxIcon":
+        return <AddBoxIcon />;
+      case "IndeterminateCheckBoxOutlinedIcon":
+        return <IndeterminateCheckBoxOutlinedIcon />;
       case "edit":
         return "edit";
       case "delete":
