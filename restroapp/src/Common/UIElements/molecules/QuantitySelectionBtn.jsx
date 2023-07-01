@@ -3,30 +3,28 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import { handleAddItem } from "../../../Utils/utils";
 
-const QuantitySelectionBtn = ({ price }) => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelectionBtn = ({ cart, setCart, item }) => {
+  const [quantity, setQuantity] = useState(
+    cart?.[item.itemId]?.quantity !== undefined
+      ? cart?.[item.itemId]?.quantity
+      : 1
+  );
 
   const handleIncrement = () => {
-    setQuantity((prevState) => {
+    /*setQuantity((prevState) => {
       return prevState + 1;
-    });
+    });*/
+    setQuantity(quantity + 1);
   };
 
   const handleDecrement = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       setQuantity(quantity - 1);
+    } else {
+      setQuantity(0);
     }
-  };
-
-  const handleAddItem = () => {
-    // Implement the logic for adding the item to the cart or performing any other action.
-    // You can access the selected quantity using the `quantity` state variable.
-    // You can also access the `price` prop for further processing.
-
-    // For demonstration purposes, we'll simply log the selected quantity and price.
-    console.log(`Quantity: ${quantity}`);
-    console.log(`Price: ${price}`);
   };
 
   return (
@@ -54,7 +52,7 @@ const QuantitySelectionBtn = ({ price }) => {
         </Typography>
 
         <Typography variant="h6" className={"global-font-color"}>
-          {quantity}
+          {quantity !== undefined ? quantity : 1}
         </Typography>
 
         <Typography
@@ -69,7 +67,7 @@ const QuantitySelectionBtn = ({ price }) => {
       <Button
         variant="contained"
         color="primary"
-        onClick={handleAddItem}
+        onClick={() => handleAddItem(item, quantity, setCart)}
         sx={{
           flex: 1,
           height: "100%",
@@ -77,7 +75,8 @@ const QuantitySelectionBtn = ({ price }) => {
         }}
         className={"global-theme-color"}
       >
-        Add Item ₹{parseInt(price * quantity)}
+        Add Item ₹
+        {parseInt(item.itemPrice * (quantity !== undefined ? quantity : 1))}
       </Button>
     </Box>
   );
