@@ -11,14 +11,33 @@ import { ItemDetailsProps } from "../../../Constants/constants";
 import { CartPage } from "./CartPage";
 import { MyAccountPage } from "./AccountPage";
 
-const CommonModulePages = ({ page }) => {
+const CommonModulePages = ({
+  page,
+  cart,
+  setCart,
+  cartTotal,
+  setCartTotal,
+}) => {
   switch (page) {
     case LandingPagePath:
       return <LandingPage />;
     case ItemDetailsPath:
-      return <ItemDetails itemProps={ItemDetailsProps} />;
+      return (
+        <ItemDetails
+          itemProps={ItemDetailsProps}
+          cart={cart}
+          setCart={setCart}
+        />
+      );
     case CartPath:
-      return <CartPage />;
+      return (
+        <CartPage
+          cart={cart}
+          cartTotal={cartTotal}
+          setCartTotal={setCartTotal}
+          setCart={setCart}
+        />
+      );
     case AccountPath:
       return (
         <MyAccountPage accountName={"John Doe"} accountPhone={"+9698969896"} />
