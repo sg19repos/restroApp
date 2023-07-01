@@ -1,14 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
   IconButton,
   Button,
-  Divider,
   Paper,
 } from "@mui/material";
 import { styled } from "@mui/system";
@@ -19,54 +14,32 @@ import ImageComponent from "../../../Common/UIElements/Image";
 import {
   GlobalFont,
   GlobalFontColor,
-  GlobalThemeColor,
   GlobalThemes,
   themeColor,
 } from "../../../Themes/GlobalThemes";
-import SubtotalTotalComponent from "../../../Common/UIElements/atoms/cartTotals";
 import { Currency } from "../../../Common/UIElements/atoms/Currency";
 import { ShippingAddress } from "../../../Common/UIElements/molecules/ShippingAddress";
 import { Total2 } from "../../../Common/UIElements/atoms/Totals2";
+import { handleAlterCart } from "../../../Utils/utils";
 
-export const CartPage = () => {
-  const cartItems = [
-    {
-      id: 1,
-      thumbnailUrl: "https://example.com/item1.jpg",
-      // title: "Item 1",
-      title: "Veg biryani",
-      price: 60,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      thumbnailUrl: "https://example.com/item2.jpg",
-      // title: "Item 2",
-      title: "Masala Dosa",
-      price: 40,
-      quantity: 1,
-    },
-  ];
-
-  const handleIncreaseQuantity = (itemId) => {
-    // Handle logic to increase item quantity
+export const CartPage = ({ cart, cartTotal, setCartTotal, setCart }) => {
+  const [cartTemp, setCartTemp] = useState({ ...cart });
+  useEffect(() => {
+    setCartTemp({ ...cart });
+    let cartTotalTemp = 0;
+    cart &&
+      Object.keys(cart)?.length &&
+      Object.keys(cart)?.forEach((element) => {
+        cartTotalTemp +=
+          cart?.[element]?.itemPrice * (cart?.[element]?.quantity || 1);
+      });
+    setCartTotal(cartTotalTemp);
+  }, [cart]);
+  const handleIncreaseQuantity = (item) => {
+    handleAlterCart(item, "increase", setCart, setCartTotal);
   };
-
-  const handleDecreaseQuantity = (itemId) => {
-    // Handle logic to decrease item quantity
-  };
-
-  const handleRemoveItem = (itemId) => {
-    // Handle logic to remove item from cart
-  };
-
-  const calculateTotal = () => {
-    // Calculate the total price of all items in the cart
-    const totalPrice = cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-    return totalPrice.toFixed(2);
+  const handleDecreaseQuantity = (item) => {
+    handleAlterCart(item, "decrease", setCart, setCartTotal);
   };
 
   const StyledCart = styled(
@@ -95,7 +68,7 @@ export const CartPage = () => {
         >
           Shipping address
         </Typography>
-        <ShippingAddress address="4-4-91, 4th lane, 5th appartment, Bayyapanahalli, Bengaluru south" />
+        <ShippingAddress address="4-4-91, 4th lane, 5th apartment, Bayyapanahalli, Bengaluru south" />
 
         <Typography
           variant="body2"
@@ -105,68 +78,172 @@ export const CartPage = () => {
           Order summary
         </Typography>
         <Grid container spacing={2} direction={"column"} alignItems={"center"}>
-          {cartItems.map((item) => (
-            <Grid item xs={12} key={item.id} width={"300px"}>
-              <Paper sx={ThemeCart.paper} elevation={2}>
-                <Grid
-                  container
-                  direction={"row"}
-                  padding={"0.8rem"}
-                  justifyContent="space-between"
-                >
-                  <Grid item xs={3}>
-                    <ImageComponent
-                      name={"biryani"}
-                      width={"100%"}
-                      height={"100%"}
-                      roundedCorners
-                      className={"thumbnail"}
-                    />
-                  </Grid>
-                  <Grid item xs={8} sx={{ paddingLeft: "0.75rem" }}>
-                    <Grid
-                      container
-                      direction={"column"}
-                      justifyContent="space-between"
-                    >
-                      <Grid item xs={12}>
-                        <Typography
-                          sx={{
-                            primary: ThemeCart.title,
-                            secondary: ThemeCart.description,
-                            ...GlobalFont,
-                            ...GlobalFontColor,
-                          }}
-                          fontSize={"0.85rem"}
-                        >
-                          {item.title}
-                        </Typography>
+          {cartTemp && Object.keys(cartTemp)?.length ? (
+            Object.keys(cartTemp)?.map((item) => (
+              <Grid item xs={12} key={item.itemId} width={"300px"}>
+                <Paper sx={ThemeCart.paper} elevation={2}>
+                  <Grid
+                    container
+                    direction={"row"}
+                    padding={"0.8rem"}
+                    justifyContent="space-between"
+                  >
+                    <Grid item xs={3}>
+                      <ImageComponent
+                        name={cartTemp[item].itemId}
+                        width={"100%"}
+                        height={"100%"}
+                        roundedCorners
+                        className={"thumbnail"}
+                      />
+                    </Grid>
+                    <Grid item xs={8} sx={{ paddingLeft: "0.75rem" }}>
+                      <Grid
+                        container
+                        direction={"column"}
+                        justifyContent="space-between"
+                      >
+                        <Grid item xs={12} maxHeight={"1.5rem"}>
+                          <Grid
+                            container
+                            direction={"row"}
+                            justifyContent={"space-around"}
+                          >
+                            <Grid item xs={9}>
+                              <Typography
+                                sx={{
+                                  primary: ThemeCart.title,
+                                  secondary: ThemeCart.description,
+                                  ...GlobalFont,
+                                  ...GlobalFontColor,
+                                }}
+                                variant={"body2"}
+                                // fontSize={"0.85rem"}
+                              >
+                                {cartTemp[item]?.itemTitle}
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <Typography
+                                sx={{
+                                  primary: ThemeCart.title,
+                                  secondary: ThemeCart.description,
+                                  ...GlobalFont,
+                                  ...GlobalFontColor,
+                                }}
+                                fontSize={"0.8rem"}
+                              >
+                                # {cartTemp[item]?.quantity}
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} paddingTop={"0.25rem"}>
+                          <Currency
+                            amount={cartTemp[item]?.itemPrice}
+                            color={themeColor}
+                            fontSize={"0.8rem"}
+                          />
+                        </Grid>
+                        <Grid item xs={12} paddingTop={"0.25rem"}>
+                          <Typography
+                            sx={{
+                              primary: ThemeCart.title,
+                              secondary: ThemeCart.description,
+                              ...GlobalFont,
+                              ...GlobalFontColor,
+                            }}
+                            fontSize={"0.6rem"}
+                          >
+                            Total :{" "}
+                            {cartTemp[item]?.quantity *
+                              cartTemp[item]?.itemPrice}
+                          </Typography>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12} paddingTop={"0.25rem"}>
-                        <Currency
-                          amount={item.price}
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Grid
+                        container
+                        direction="column"
+                        justifyContent="space-between"
+                        alignItems="center"
+                        minHeight={"90%"}
+                      >
+                        <Grid
+                          item
+                          xs={12}
+                          height={"inherit"}
                           color={themeColor}
-                          fontSize={"0.8rem"}
-                        />
+                        >
+                          <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="back"
+                            onClick={() => {
+                              handleIncreaseQuantity(cartTemp[item]);
+                            }}
+                            sx={{ padding: "0.25rem" }}
+                          >
+                            <IconComponent
+                              name={"AddBoxIcon"}
+                              color={themeColor}
+                            />
+                          </IconButton>
+                        </Grid>
+                        <Grid item xs={12} color={themeColor}>
+                          <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="back"
+                            onClick={() => {
+                              handleDecreaseQuantity(cartTemp[item]);
+                            }}
+                            sx={{ padding: "0.25rem" }}
+                          >
+                            <IconComponent
+                              name={"IndeterminateCheckBoxOutlinedIcon"}
+                              color={themeColor}
+                            />
+                          </IconButton>
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={1}>
-                    <IconComponent
-                      name={"RemoveCircleIcon"}
-                      color={themeColor}
-                    />
-                    <IconComponent name={"AddCircleIcon"} color={themeColor} />
-                  </Grid>
+                </Paper>
+              </Grid>
+            ))
+          ) : (
+            <Paper
+              sx={{ ...ThemeCart.paper, width: "280px", marginTop: "1rem" }}
+              elevation={1}
+            >
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Grid item xs={12} sx={{ margin: "4rem" }}>
+                  <Typography
+                    sx={{
+                      primary: ThemeCart.title,
+                      secondary: ThemeCart.description,
+                      ...GlobalFont,
+                      ...GlobalFontColor,
+                    }}
+                    fontSize={"0.6rem"}
+                  >
+                    Please add items to your cart
+                  </Typography>
                 </Grid>
-              </Paper>
-            </Grid>
-          ))}
+              </Grid>
+            </Paper>
+          )}
         </Grid>
         <Grid container direction={"column"}>
           <Grid item xs={12} sx={{ margin: "2rem 0rem" }}>
-            {/*<SubtotalTotalComponent />*/}
-            <Total2 />
+            <Total2 totalAmount={cartTotal} />
           </Grid>
           <Grid item xs={12} alignSelf={"center"}>
             <Button
