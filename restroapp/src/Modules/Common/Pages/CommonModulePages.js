@@ -5,11 +5,13 @@ import {
   ItemDetailsPath,
   CartPath,
   AccountPath,
+  ItemCategoriesPath,
 } from "./Routes/CommonModuleRoutes";
 import { ItemDetails } from "./ItemDetails/ItemDetails";
 import { ItemDetailsProps } from "../../../Constants/constants";
 import { CartPage } from "./CartPage";
 import { MyAccountPage } from "./AccountPage";
+import { ItemCategories } from "./ItemCategories";
 
 const CommonModulePages = ({
   page,
@@ -29,6 +31,8 @@ const CommonModulePages = ({
           setCart={setCart}
         />
       );
+    case ItemCategoriesPath:
+      return <ItemCategories />;
     case CartPath:
       return (
         <CartPage
