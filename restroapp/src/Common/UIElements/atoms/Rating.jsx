@@ -5,8 +5,8 @@ import IconComponent from "../Icons";
 const StarRating = ({ value, ratingsCount }) => {
   return (
     <>
-      <Grid container sx={{ width: "75%" }}>
-        <Grid item xs={7}>
+      <Grid container direction={"column"} sx={{ width: "75%" }}>
+        <Grid item xs={12}>
           <Rating
             name="star-rating"
             value={value}
@@ -15,7 +15,7 @@ const StarRating = ({ value, ratingsCount }) => {
             emptyIcon={<IconComponent name="StarBorderIcon" />}
           />
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={12}>
           <Typography variant="body2" color="textSecondary" component="span">
             {ratingsCount} ratings
           </Typography>
