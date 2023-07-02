@@ -1,4 +1,4 @@
-import biryani from "./others/biryani.jpg";
+import biryani from "./others/biryani.png";
 import biryanibowl from "./others/biryanibowl.png";
 import pizza from "./others/pizza.png";
 import rolls from "./others/rolls.png";
@@ -13,6 +13,15 @@ import circleLogo from "../Images/logos/circleLogo.png";
 import bg1 from "./backgrounds/bg1.jpg";
 import circleLogoWhite from "../Images/logos/circleLogoWhite.png";
 import circleLogoWhite2 from "../Images/logos/circleLogoWhite2.png";
+import muttonBiryani from "./others/muttonBiryani.png";
+import vegBiryani from "./others/vegBiryani.png";
+import chickenBiryani from "./others/chickenBiryani.png";
+import sambarIdly from "./others/sambarIdly.png";
+import gheeIdly from "./others/gheeIdly.png";
+import plainIdly from "./others/plainIdly.png";
+import plainDosa from "./others/plainDosa.png";
+import ravvaDosa from "./others/ravvaDosa.png";
+import masalaDosa from "./others/masalaDosa.png";
 
 // Import other index as needed
 
@@ -32,6 +41,15 @@ const ImagesList = {
   circleLogoWhite,
   circleLogoWhite2,
   bg1,
+  muttonBiryani,
+  vegBiryani,
+  chickenBiryani,
+  sambarIdly,
+  gheeIdly,
+  plainIdly,
+  plainDosa,
+  ravvaDosa,
+  masalaDosa,
 };
 
 export default ImagesList;
