@@ -68,7 +68,7 @@ export const MainMenu = () => {
 export const MenuList = ({ filteredMenuItems }) => {
   const navigate = useNavigate();
   const handleItemClick = (itemId) => {
-    navigate(`/itemDetails?itemId=${itemId}`);
+    navigate(`/itemCategories?itemCategory=${itemId}`);
   };
 
   return (
