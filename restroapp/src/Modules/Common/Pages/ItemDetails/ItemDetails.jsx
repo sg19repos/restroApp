@@ -8,6 +8,8 @@ import StarRating from "../../../../Common/UIElements/atoms/Rating";
 import QuantitySelectionBtn from "../../../../Common/UIElements/molecules/QuantitySelectionBtn";
 import AddOnItemList from "../../../../Common/UIElements/molecules/AddOnListItems";
 import { useLocation, useParams } from "react-router-dom";
+import { Currency } from "../../../../Common/UIElements/atoms/Currency";
+import { GlobalFontColor, themeColor } from "../../../../Themes/GlobalThemes";
 
 export const ItemDetails = ({ cart, setCart }) => {
   const location = useLocation();
@@ -54,11 +56,22 @@ export const ItemDetails = ({ cart, setCart }) => {
           />
         </Grid>
         <Grid item xs={12} sx={{ height: "60%", padding: "16px" }}>
-          <Typography variant="body1" className={"item-title"}>
-            {itemTitle}
-          </Typography>
-          {/*<IconComponent name="FavoriteBorderIcon" />*/}
-          <StarRating value={itemRating} ratingsCount={48} />
+          <Grid container direction={"row"}>
+            <Grid item xs={10}>
+              <Typography variant="body1" className={"item-title"}>
+                {itemTitle}
+              </Typography>
+              <StarRating value={itemRating} ratingsCount={48} />
+            </Grid>
+            <Grid item xs={2} sx={{ fontSize: "2rem", ...GlobalFontColor }}>
+              <Currency
+                amount={itemPrice}
+                fontSize={"2rem"}
+                color={themeColor}
+              />
+            </Grid>
+          </Grid>
+
           <Typography variant="h5" gutterBottom className={"item-sub-title"}>
             {"About"}
           </Typography>
