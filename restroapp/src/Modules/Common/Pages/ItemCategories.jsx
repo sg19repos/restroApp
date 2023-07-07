@@ -10,8 +10,10 @@ import {
 import { Currency } from "../../../Common/UIElements/atoms/Currency";
 import { useLocation, useNavigate } from "react-router-dom";
 import { itemCategories } from "../../../Constants/constants";
+import QuantitySelectionBtn from "../../../Common/UIElements/molecules/QuantitySelectionBtn";
+import { ItemTile } from "../../../Common/UIElements/molecules/ItemTile";
 
-export const ItemCategories = () => {
+export const ItemCategories = ({ cart, setCart }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const itemCategory = searchParams.get("itemCategory");
@@ -52,7 +54,7 @@ export const ItemCategories = () => {
       <Grid item xs={12} style={{ height: "80%", overflowY: "scroll" }}>
         {Object.values(itemCategories[itemCategory]).map((element) => {
           return (
-            <Grid container justifyContent="flex-end" alignItems="center">
+            /*<Grid container justifyContent="flex-end" alignItems="center">
               <Paper sx={{ width: "100%", marginTop: "2rem" }} elevation={2}>
                 <Grid item xs={12}>
                   <Grid
@@ -120,7 +122,8 @@ export const ItemCategories = () => {
                   </Grid>
                 </Grid>
               </Paper>
-            </Grid>
+            </Grid>*/
+            <ItemTile element={element} cart={cart} setCart={setCart} />
           );
         })}
       </Grid>
