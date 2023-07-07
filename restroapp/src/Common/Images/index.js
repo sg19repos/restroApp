@@ -22,6 +22,7 @@ import plainIdly from "./others/plainIdly.png";
 import plainDosa from "./others/plainDosa.png";
 import ravvaDosa from "./others/ravvaDosa.png";
 import masalaDosa from "./others/masalaDosa.png";
+import cartIllus from "./illustrations/cart.png";
 
 // Import other index as needed
 
@@ -50,6 +51,7 @@ const ImagesList = {
   plainDosa,
   ravvaDosa,
   masalaDosa,
+  cartIllus,
 };
 
 export default ImagesList;
