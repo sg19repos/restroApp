@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import IconComponent from "../Icons";
+import ImageComponent from "../Image";
 
 const TopNavBar = () => {
   const navigate = useNavigate();
@@ -30,6 +31,15 @@ const TopNavBar = () => {
           sx={{ flexGrow: 1, textAlign: "center" }}
         ></Typography>
         <div className={"navbar-icons-alignment"}>
+          {/*<IconButton
+            edge="center"
+            color="inherit"
+            aria-label="cart"
+            sx={{ margin: "0rem 4rem" }}
+            onClick={() => handleIconClick("/home")}
+          >
+            <ImageComponent name="circleLogo" width={"30px"} height={"30px"} />
+          </IconButton>*/}
           <IconButton
             edge="end"
             color="inherit"
