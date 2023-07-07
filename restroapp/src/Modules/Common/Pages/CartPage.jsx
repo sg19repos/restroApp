@@ -235,6 +235,7 @@ export const CartPage = ({ cart, cartTotal, setCartTotal, setCart }) => {
                     fontSize={"0.6rem"}
                   >
                     Please add items to your cart
+                    <ImageComponent name={"cartIllus"} width={"100%"} />
                   </Typography>
                 </Grid>
               </Grid>
