@@ -28,32 +28,60 @@ export const MainMenu = () => {
     <div className={"root"}>
       <Grid container spacing={2} direction={"column"} alignItems={"stretch"}>
         <Grid item xs={12} className={"search-container"}>
-          <TextField
-            className={"search-field"}
-            fullWidth
-            variant="outlined"
-            placeholder="Search for your favorite dishes"
-            value={searchText}
-            onChange={handleSearchChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" sx={{ paddingRight: "4px" }}>
-                  <IconComponent name={"SearchIcon"} />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <ImageComponent
+                name="circleLogo"
+                width={"100px"}
+                height={"110px"}
+              />
+            </Grid>
+            <Grid item xs={12} width={"100%"} paddingBottom={"1rem"}>
+              <TextField
+                className={"search-field"}
+                fullWidth
+                variant="outlined"
+                placeholder="Search for your favorite dishes"
+                value={searchText}
+                onChange={handleSearchChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      position="start"
+                      sx={{ paddingRight: "4px" }}
+                    >
+                      <IconComponent name={"SearchIcon"} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+          </Grid>
         </Grid>
 
         <Grid item xs={12} className={"search-label"}>
-          <Typography
-            alignItems={"center"}
-            variant="overline"
-            className={"text-align-center global-font global-font-color"}
-            padding={"1rem"}
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
           >
-            What's on your mind?
-          </Typography>
+            <Grid item xs={12}>
+              <Typography
+                alignItems={"center"}
+                variant="overline"
+                className={"text-align-center global-font global-font-color"}
+                padding={"1rem"}
+              >
+                What's on your mind?
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12} className={"menu-container"}>
           <Grid container spacing={1}>
