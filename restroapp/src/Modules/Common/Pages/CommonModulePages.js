@@ -32,7 +32,7 @@ const CommonModulePages = ({
         />
       );
     case ItemCategoriesPath:
-      return <ItemCategories />;
+      return <ItemCategories cart={cart} setCart={setCart} />;
     case CartPath:
       return (
         <CartPage
