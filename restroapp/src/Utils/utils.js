@@ -73,7 +73,9 @@ export const handleAlterCart = (item, action, setCart, setCartTotal) => {
         ...prevState,
         [item.itemId]: {
           ...item,
-          quantity: prevState?.[item?.itemId]?.quantity + 1,
+          quantity: prevState?.[item?.itemId]?.quantity
+            ? prevState?.[item?.itemId]?.quantity + 1
+            : 1,
         },
       };
     });
