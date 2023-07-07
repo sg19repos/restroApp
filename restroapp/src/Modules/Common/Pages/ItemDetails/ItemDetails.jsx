@@ -83,11 +83,11 @@ export const ItemDetails = ({ cart, setCart }) => {
             {itemDescription}
           </Typography>
         </Grid>
-        <Grid item xs={12} sx={{ margin: "0rem 0.8rem 1rem 0.8rem" }}>
+        {/*<Grid item xs={12} sx={{ margin: "0rem 0.8rem 1rem 0.8rem" }}>
           <Paper elevation={2} sx={{ padding: "0rem 1.5rem" }}>
             <AddOnItemList />
           </Paper>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={12}>
           <QuantitySelectionBtn
             cart={cart}
