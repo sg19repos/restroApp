@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { TextField, InputAdornment, Grid, Paper } from "@mui/material";
+import { TextField, InputAdornment, Grid, Paper, Chip } from "@mui/material";
 import IconComponent from "../../../Common/UIElements/Icons";
 import { useNavigate } from "react-router-dom";
 import ImageComponent from "../../../Common/UIElements/Image";
 import { MenuItems } from "../../../Constants/constants";
 import Typography from "@mui/material/Typography";
 import { getFireStoreElements } from "../../../Utils/utils";
+import HorizontalMenu from "../../../Common/UIElements/molecules/HorizontalMenu";
+import { Stack } from "@mui/system";
 
 export const MainMenu = () => {
   const [searchText, setSearchText] = useState("");
+  const [selectedChip, setSelectedChip] = useState("breakFast");
   let menuItems = localStorage.getItem("menu");
   let menuTemp = menuItems?.length ? JSON.parse(menuItems) : [];
   const filteredMenuItems = typeof menuTemp === "string" ? menuTemp : menuTemp;
@@ -63,7 +66,6 @@ export const MainMenu = () => {
             </Grid>
           </Grid>
         </Grid>
-
         <Grid item xs={12} className={"search-label"}>
           <Grid
             container
@@ -82,6 +84,66 @@ export const MainMenu = () => {
               </Typography>
             </Grid>
           </Grid>
+        </Grid>
+        <Grid item xs={12} sx={{ margin: "0rem 1rem" }}>
+          <Typography
+            alignItems={"left"}
+            variant="body1"
+            className={"global-font global-font-color"}
+            padding={"1rem 0rem 0.5rem 0rem"}
+            fontWeight={"800"}
+          >
+            Popular menus
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sx={{ margin: "0rem 2rem" }}>
+          <Stack direction="row" spacing={3}>
+            <Chip
+              label="Breakfast"
+              color="success"
+              className={`${selectedChip === "breakFast" ? "chip-button" : ""}`}
+              variant="outlined"
+              onClick={() => setSelectedChip("breakFast")}
+            />
+            <Chip
+              label="Dinner"
+              color="success"
+              className={`${selectedChip === "dinner" ? "chip-button" : ""}`}
+              variant="outlined"
+              onClick={() => setSelectedChip("dinner")}
+            />
+            <Chip
+              label="Snacks"
+              color="success"
+              className={`${selectedChip === "snacks" ? "chip-button" : ""}`}
+              variant="outlined"
+              onClick={() => setSelectedChip("snacks")}
+            />
+          </Stack>
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          style={{
+            width: "80vw",
+            overflowX: "auto",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
+          <HorizontalMenu menuTime={selectedChip} />
+        </Grid>
+        <Grid item xs={12} sx={{ margin: "0rem 1rem" }}>
+          <Typography
+            alignItems={"left"}
+            variant="body1"
+            className={"global-font global-font-color"}
+            padding={"1rem 0rem 0.5rem 0rem"}
+            fontWeight={"800"}
+          >
+            Categories
+          </Typography>
         </Grid>
         <Grid item xs={12} className={"menu-container"}>
           <Grid container spacing={1}>
