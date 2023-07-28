@@ -9,9 +9,16 @@ import {
 } from "../../../Themes/GlobalThemes";
 import { Currency } from "../../../Common/UIElements/atoms/Currency";
 import { useLocation, useNavigate } from "react-router-dom";
-import { itemCategories } from "../../../Constants/constants";
+import {
+  breakfast,
+  breakFastMenu,
+  dinner,
+  itemCategories,
+  snacks,
+} from "../../../Constants/constants";
 import QuantitySelectionBtn from "../../../Common/UIElements/molecules/QuantitySelectionBtn";
 import { ItemTile } from "../../../Common/UIElements/molecules/ItemTile";
+import { ItemTile2 } from "../../../Common/UIElements/molecules/ItemTile2";
 
 export const ItemCategories = ({ cart, setCart }) => {
   const location = useLocation();
@@ -22,6 +29,14 @@ export const ItemCategories = ({ cart, setCart }) => {
   const handleItemClick = (itemId) => {
     navigate(`/itemDetails?itemId=${itemId}`);
   };
+  let temp = [];
+  if (itemCategory === "breakfast") {
+    temp = breakfast;
+  } else if (itemCategory === "snacks") {
+    temp = snacks;
+  } else if (itemCategory === "dinner") {
+    temp = dinner;
+  }
   return (
     <Grid container style={{ height: "100vh" }}>
       <Grid item xs={12} style={{ height: "20%", display: "block" }}>
@@ -47,14 +62,21 @@ export const ItemCategories = ({ cart, setCart }) => {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <ImageComponent name={itemCategory} />
+            <ImageComponent
+              name={itemCategory}
+              height={"150px"}
+              width={"150px"}
+            />
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} style={{ height: "80%", overflowY: "scroll" }}>
-        {Object.values(itemCategories[itemCategory]).map((element) => {
-          return (
-            /*<Grid container justifyContent="flex-end" alignItems="center">
+        <Grid container>
+          {itemCategories[itemCategory] &&
+          Object.values(itemCategories[itemCategory])?.length
+            ? Object.values(itemCategories[itemCategory]).map((element) => {
+                return (
+                  /*<Grid container justifyContent="flex-end" alignItems="center">
               <Paper sx={{ width: "100%", marginTop: "2rem" }} elevation={2}>
                 <Grid item xs={12}>
                   <Grid
@@ -123,9 +145,21 @@ export const ItemCategories = ({ cart, setCart }) => {
                 </Grid>
               </Paper>
             </Grid>*/
-            <ItemTile element={element} cart={cart} setCart={setCart} />
-          );
-        })}
+                  <ItemTile element={element} cart={cart} setCart={setCart} />
+                );
+              })
+            : temp.map((element) => {
+                return (
+                  <Grid item xs={6} sx={{ marginTop: "1rem" }}>
+                    <ItemTile2
+                      element={element}
+                      cart={cart}
+                      setCart={setCart}
+                    />
+                  </Grid>
+                );
+              })}
+        </Grid>
       </Grid>
     </Grid>
   );
