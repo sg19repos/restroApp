@@ -60,7 +60,12 @@ export const ItemTile = ({ element, cart, setCart }) => {
               <Currency amount={element.itemPrice} fontSize={"1rem"} />
             </Grid>
             <Grid item>
-              <Rating2 rating={4} totalRatings={45} showTotals={false} />
+              <Rating2
+                rating={4}
+                readOnly={true}
+                totalRatings={45}
+                showTotals={false}
+              />
             </Grid>
             <Grid item container alignItems="center">
               <QuantitySelection2
