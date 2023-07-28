@@ -8,6 +8,9 @@ import burger from "./others/burger.png";
 import thali from "./others/thali.png";
 import noodles from "./others/noodles.png";
 import idly from "./others/idly.png";
+import breakfast from "./others/plainIdly.png";
+import snacks from "./others/plainIdly.png";
+import dinner from "./others/plainIdly.png";
 import roti from "./others/roti.png";
 import circleLogo from "../Images/logos/circleLogo.png";
 import bg1 from "./backgrounds/bg1.jpg";
@@ -52,6 +55,9 @@ const ImagesList = {
   ravvaDosa,
   masalaDosa,
   cartIllus,
+  breakfast,
+  snacks,
+  dinner,
 };
 
 export default ImagesList;
