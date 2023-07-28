@@ -115,9 +115,13 @@ export const ThemeItemDetails = {
     height: "100px",
   },
   ".menu-item-image": {
-    width: "100%",
+    // width: "70%",
+    margin: "auto",
     marginBottom: "1rem",
     borderRadius: "1rem",
+    objectFit: "cover",
+    width: "100%",
+    height: "100%",
   },
   ".root": {
     // display: "flex",
@@ -149,5 +153,10 @@ export const ThemeItemDetails = {
     width: "200px",
     height: "200px",
     padding: "20% 0%",
+  },
+  ".chip-button": {
+    backgroundImage: "linear-gradient(45deg, #93c47d 30%, #6aa84f 90%)",
+    color: "white",
+    fontWeight: "bold",
   },
 };
