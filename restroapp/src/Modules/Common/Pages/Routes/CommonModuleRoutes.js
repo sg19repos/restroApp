@@ -18,6 +18,7 @@ export const ItemDetailsPath = "itemDetails";
 export const CartPath = "cart";
 export const AccountPath = "account";
 export const ItemCategoriesPath = "itemCategories";
+export const LoginPath = "login";
 /**
  * Test routes - end
  */
@@ -67,6 +68,13 @@ const CommonModuleRoutes = [
     path: Home,
     showNavBar: true,
     showCartFooter: true,
+  },
+  {
+    type: RouteTypes.Login,
+    title: "Login",
+    path: LoginPath,
+    showNavBar: false,
+    showCartFooter: false,
   },
   {
     type: RouteTypes.Login,
