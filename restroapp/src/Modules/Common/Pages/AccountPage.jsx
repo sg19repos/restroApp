@@ -7,8 +7,13 @@ import {
   themeColor,
 } from "../../../Themes/GlobalThemes";
 import IconComponent from "../../../Common/UIElements/Icons";
+import { useNavigate } from "react-router-dom";
 
 export const MyAccountPage = ({ accountName, accountPhone }) => {
+  const navigate = useNavigate();
+  const handleItemClick = () => {
+    navigate(`/login`);
+  };
   return (
     <div>
       <Typography
@@ -194,7 +199,7 @@ export const MyAccountPage = ({ accountName, accountPhone }) => {
             alignItems: "center",
           }}
         >
-          <Grid container direction={"row"}>
+          <Grid container direction={"row"} onClick={() => handleItemClick()}>
             <Grid item xs={2}>
               {" "}
               <IconComponent
