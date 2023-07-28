@@ -77,16 +77,18 @@ const LayoutContainer = () => {
             {/*{<OrderPreview />}*/}
           </Box>
         </Grid>
-        <Grid item xs={12}>
-          {showCartFooter && (
-            <StickyFooter
-              cart={cart}
-              setCart={setCart}
-              cartTotal={cartTotal}
-              setCartTotal={setCartTotal}
-            />
-          )}
-        </Grid>
+        {Object.keys(cart)?.length !== 0 && (
+          <Grid item xs={12}>
+            {showCartFooter && (
+              <StickyFooter
+                cart={cart}
+                setCart={setCart}
+                cartTotal={cartTotal}
+                setCartTotal={setCartTotal}
+              />
+            )}
+          </Grid>
+        )}
       </Grid>
       {/*{!["/signup", "/login"].includes(history.location.pathname) && (*/}
     </>
