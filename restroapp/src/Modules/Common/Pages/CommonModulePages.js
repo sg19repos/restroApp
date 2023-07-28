@@ -6,12 +6,14 @@ import {
   CartPath,
   AccountPath,
   ItemCategoriesPath,
+  LoginPath,
 } from "./Routes/CommonModuleRoutes";
 import { ItemDetails } from "./ItemDetails/ItemDetails";
 import { ItemDetailsProps } from "../../../Constants/constants";
 import { CartPage } from "./CartPage";
 import { MyAccountPage } from "./AccountPage";
 import { ItemCategories } from "./ItemCategories";
+import { LoginPage } from "./LoginPage";
 
 const CommonModulePages = ({
   page,
@@ -46,6 +48,8 @@ const CommonModulePages = ({
       return (
         <MyAccountPage accountName={"John Doe"} accountPhone={"+9698969896"} />
       );
+    case LoginPath:
+      return <LoginPage />;
     default:
       return <LandingPage />;
   }
