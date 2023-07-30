@@ -1,22 +1,16 @@
 import React from "react";
 import { Grid, Link, Paper } from "@mui/material";
-import { snacks, dinner, breakfast } from "../../../Constants/constants";
+import { menuItems } from "../../../Constants/constants";
 import ImageComponent from "../Image";
 import Typography from "@mui/material/Typography";
 import IconComponent from "../Icons";
 import { themeColor } from "../../../Themes/GlobalThemes";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useNavigate } from "react-router-dom";
+import { filterItemsByCriteria } from "../../../Utils/utils";
 
 export const HorizontalMenu = ({ menuTime }) => {
-  let temp = [];
-  if (menuTime === "breakFast") {
-    temp = breakfast;
-  } else if (menuTime === "snacks") {
-    temp = snacks;
-  } else if (menuTime === "dinner") {
-    temp = dinner;
-  }
+  let temp = filterItemsByCriteria(menuTime, menuItems);
 
   const navigate = useNavigate();
   const handleItemClick = (itemId) => {
@@ -88,7 +82,7 @@ const Card = ({ item }) => {
           sx={{
             height: "40%",
             marginTop: "0.5rem",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
             borderRadius: "5% 5% 0% 0%",
           }}
         >
