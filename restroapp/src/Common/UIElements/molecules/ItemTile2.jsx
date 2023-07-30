@@ -18,6 +18,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import { useNavigate } from "react-router-dom";
 import { padding } from "@mui/system";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import { ItemVegNonVegMappings } from "../../../Constants/mappings";
 
 export const ItemTile2 = ({ element, cart, setCart }) => {
   const navigate = useNavigate();
@@ -89,12 +90,21 @@ export const ItemTile2 = ({ element, cart, setCart }) => {
               <Grid item xs={10}>
                 <Currency amount={element.itemPrice} fontSize={"1.25rem"} />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} sx={{ marginTop: "0.25rem" }}>
                 <FiberManualRecordIcon
                   sx={{
-                    color: "green",
+                    color:
+                      element.vegNonVeg === ItemVegNonVegMappings.VEG
+                        ? "green"
+                        : "red",
                     fontSize: "0.5rem",
-                    border: "1px solid green",
+                    border:
+                      "1px solid " +
+                      `${
+                        element.vegNonVeg === ItemVegNonVegMappings.VEG
+                          ? "green"
+                          : "red"
+                      }`,
                     borderRadius: "20%",
                     padding: "2px",
                   }}
