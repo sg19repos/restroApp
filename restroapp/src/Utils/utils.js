@@ -81,3 +81,9 @@ export const handleAlterCart = (item, action, setCart, setCartTotal) => {
     });
   }
 };
+
+export const filterItemsByCriteria = (criteria, menuItems) => {
+  return menuItems.filter((element) => {
+    return element.itemCategory === criteria || element.itemTime === criteria;
+  });
+};
