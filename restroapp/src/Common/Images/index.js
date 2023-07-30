@@ -7,10 +7,10 @@ import dosa from "./others/dosa.png";
 import burger from "./others/burger.png";
 import thali from "./others/thali.png";
 import noodles from "./others/noodles.png";
-import idly from "./others/idly.png";
+import idly from "./others/plainIdly.png";
 import breakfast from "./others/plainIdly.png";
-import snacks from "./others/plainIdly.png";
-import dinner from "./others/plainIdly.png";
+import snacks from "./others/vada.png";
+import dinner from "./others/dinner.png";
 import roti from "./others/roti.png";
 import circleLogo from "../Images/logos/circleLogo.png";
 import bg1 from "./backgrounds/bg1.jpg";
@@ -25,6 +25,10 @@ import plainIdly from "./others/plainIdly.png";
 import plainDosa from "./others/plainDosa.png";
 import ravvaDosa from "./others/ravvaDosa.png";
 import masalaDosa from "./others/masalaDosa.png";
+import vada from "./others/vada.png";
+import poori from "./others/poori.png";
+import rice from "./others/rice.png";
+import curry from "./others/curry.png";
 import cartIllus from "./illustrations/cart.png";
 
 // Import other index as needed
@@ -58,6 +62,10 @@ const ImagesList = {
   breakfast,
   snacks,
   dinner,
+  vada,
+  poori,
+  rice,
+  curry,
 };
 
 export default ImagesList;
