@@ -8,16 +8,19 @@ import Typography from "@mui/material/Typography";
 import { getFireStoreElements } from "../../../Utils/utils";
 import HorizontalMenu from "../../../Common/UIElements/molecules/HorizontalMenu";
 import { Stack } from "@mui/system";
+import { ItemCategoryMappings } from "../../../Constants/mappings";
 
 export const MainMenu = () => {
   const [searchText, setSearchText] = useState("");
-  const [selectedChip, setSelectedChip] = useState("breakFast");
-  let menuItems = localStorage.getItem("menu");
-  let menuTemp = menuItems?.length ? JSON.parse(menuItems) : [];
-  const filteredMenuItems = typeof menuTemp === "string" ? menuTemp : menuTemp;
-  /*const filteredMenuItems = menuTemp.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
-  );*/
+  const [selectedChip, setSelectedChip] = useState("breakfast");
+  // let menuItems = localStorage.getItem("menu");
+  let menuItems = Object.values(ItemCategoryMappings);
+  // let menuTemp = menuItems?.length ? JSON.parse(menuItems) : [];
+  let menuTemp = menuItems?.length ? menuItems : [];
+  // const filteredMenuItems = typeof menuTemp === "string" ? menuTemp : menuTemp;
+  const filteredMenuItems = menuTemp.filter((item) => {
+    return item?.toLowerCase().includes(searchText.toLowerCase());
+  });
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
@@ -101,9 +104,9 @@ export const MainMenu = () => {
             <Chip
               label="Breakfast"
               color="success"
-              className={`${selectedChip === "breakFast" ? "chip-button" : ""}`}
+              className={`${selectedChip === "breakfast" ? "chip-button" : ""}`}
               variant="outlined"
-              onClick={() => setSelectedChip("breakFast")}
+              onClick={() => setSelectedChip("breakfast")}
             />
             <Chip
               label="Dinner"
@@ -168,8 +171,8 @@ export const MenuList = ({ filteredMenuItems }) => {
           item
           xs={6}
           sm={8}
-          key={menuItem.itemName}
-          onClick={() => handleItemClick(menuItem.itemName)}
+          key={menuItem}
+          onClick={() => handleItemClick(menuItem)}
         >
           <Grid
             container
@@ -180,7 +183,7 @@ export const MenuList = ({ filteredMenuItems }) => {
             <Grid item xs={12}>
               <Paper elevation={1} className={"menu-item"}>
                 <ImageComponent
-                  name={menuItem.imageUrl}
+                  name={menuItem}
                   width={"100%"}
                   height={"100%"}
                   roundedCorners
@@ -192,8 +195,9 @@ export const MenuList = ({ filteredMenuItems }) => {
               <Typography
                 variant="caption"
                 className={"text-align-center global-font global-font-color"}
+                sx={{ textTransform: "capitalize" }}
               >
-                {menuItem.title}
+                {menuItem}
               </Typography>
             </Grid>
           </Grid>
