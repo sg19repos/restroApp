@@ -14,11 +14,13 @@ import {
   breakFastMenu,
   dinner,
   itemCategories,
+  menuItems,
   snacks,
 } from "../../../Constants/constants";
 import QuantitySelectionBtn from "../../../Common/UIElements/molecules/QuantitySelectionBtn";
 import { ItemTile } from "../../../Common/UIElements/molecules/ItemTile";
 import { ItemTile2 } from "../../../Common/UIElements/molecules/ItemTile2";
+import { filterItemsByCriteria } from "../../../Utils/utils";
 
 export const ItemCategories = ({ cart, setCart }) => {
   const location = useLocation();
@@ -29,14 +31,9 @@ export const ItemCategories = ({ cart, setCart }) => {
   const handleItemClick = (itemId) => {
     navigate(`/itemDetails?itemId=${itemId}`);
   };
-  let temp = [];
-  if (itemCategory === "breakfast") {
-    temp = breakfast;
-  } else if (itemCategory === "snacks") {
-    temp = snacks;
-  } else if (itemCategory === "dinner") {
-    temp = dinner;
-  }
+
+  let temp = filterItemsByCriteria(itemCategory, menuItems);
+
   return (
     <Grid container style={{ height: "100vh" }}>
       <Grid item xs={12} style={{ height: "20%", display: "block" }}>
@@ -72,93 +69,21 @@ export const ItemCategories = ({ cart, setCart }) => {
       </Grid>
       <Grid item xs={12} style={{ height: "80%", overflowY: "scroll" }}>
         <Grid container>
-          {itemCategories[itemCategory] &&
+          {/*{itemCategories[itemCategory] &&
           Object.values(itemCategories[itemCategory])?.length
             ? Object.values(itemCategories[itemCategory]).map((element) => {
                 return (
-                  /*<Grid container justifyContent="flex-end" alignItems="center">
-              <Paper sx={{ width: "100%", marginTop: "2rem" }} elevation={2}>
-                <Grid item xs={12}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    padding={"1rem"}
-                  >
-                    <Grid item xs={4}>
-                      <ImageComponent name={element.image} width={"100px"} />
-                    </Grid>
-                    <Grid item xs={8} sx={{ paddingLeft: "1rem" }}>
-                      <Grid
-                        container
-                        direction={"column"}
-                        justifyContent="center"
-                      >
-                        <Grid item xs={12}>
-                          <Typography
-                            sx={{
-                              ...GlobalFont,
-                              fontWeight: "bold",
-                            }}
-                            variant={"body2"}
-                          >
-                            {element.title}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                          <Grid
-                            container
-                            direction={"row"}
-                            sx={{
-                              marginTop: "1rem",
-                              GlobalFont,
-                              color: themeColor,
-                            }}
-                          >
-                            <Grid item xs={4} sx={{ fontWeight: "bold" }}>
-                              <Currency
-                                amount={element.price}
-                                fontSize={"1rem"}
-                              />
-                            </Grid>
-                            <Grid item xs={8}>
-                              <Button
-                                variant={"contained"}
-                                size={"small"}
-                                sx={{
-                                  GlobalFont,
-                                  color: themeColor,
-                                  backgroundColor: "#fff",
-                                  fontSize: "0.5rem",
-                                }}
-                                onClick={() => handleItemClick(element.id)}
-                              >
-                                Order now
-                              </Button>
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Grid>*/
                   <ItemTile element={element} cart={cart} setCart={setCart} />
                 );
               })
-            : temp.map((element) => {
-                return (
-                  <Grid item xs={6} sx={{ marginTop: "1rem" }}>
-                    <ItemTile2
-                      element={element}
-                      cart={cart}
-                      setCart={setCart}
-                    />
-                  </Grid>
-                );
-              })}
+            :*/}
+          {temp?.map((element) => {
+            return (
+              <Grid item xs={6} sx={{ marginTop: "1rem" }}>
+                <ItemTile2 element={element} cart={cart} setCart={setCart} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Grid>
     </Grid>
