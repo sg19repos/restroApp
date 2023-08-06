@@ -8,11 +8,12 @@ import {
 } from "../../../Themes/GlobalThemes";
 import IconComponent from "../../../Common/UIElements/Icons";
 import { useNavigate } from "react-router-dom";
+import { AddressBookPath, LoginPath } from "./Routes/CommonModuleRoutes";
 
 export const MyAccountPage = ({ accountName, accountPhone }) => {
   const navigate = useNavigate();
-  const handleItemClick = () => {
-    navigate(`/login`);
+  const handleItemClick = (path) => {
+    navigate(`/` + path);
   };
   return (
     <div>
@@ -118,7 +119,11 @@ export const MyAccountPage = ({ accountName, accountPhone }) => {
             alignItems: "center",
           }}
         >
-          <Grid container direction={"row"}>
+          <Grid
+            container
+            direction={"row"}
+            onClick={() => handleItemClick(AddressBookPath)}
+          >
             <Grid item xs={2}>
               <IconComponent
                 name={"HomeRoundedIcon"}
@@ -199,7 +204,11 @@ export const MyAccountPage = ({ accountName, accountPhone }) => {
             alignItems: "center",
           }}
         >
-          <Grid container direction={"row"} onClick={() => handleItemClick()}>
+          <Grid
+            container
+            direction={"row"}
+            onClick={() => handleItemClick(LoginPath)}
+          >
             <Grid item xs={2}>
               {" "}
               <IconComponent
