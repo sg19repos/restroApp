@@ -17,6 +17,8 @@ export const LandingPagePath = "home";
 export const ItemDetailsPath = "itemDetails";
 export const CartPath = "cart";
 export const AccountPath = "account";
+export const AddressEntryPagePath = "addAddress";
+export const AddressBookPath = "selectAddress";
 export const ItemCategoriesPath = "itemCategories";
 export const LoginPath = "login";
 /**
@@ -74,6 +76,20 @@ const CommonModuleRoutes = [
     title: "Login",
     path: LoginPath,
     showNavBar: false,
+    showCartFooter: false,
+  },
+  {
+    type: RouteTypes.Login,
+    title: "Add address",
+    path: AddressEntryPagePath,
+    showNavBar: true,
+    showCartFooter: false,
+  },
+  {
+    type: RouteTypes.Login,
+    title: "Select address",
+    path: AddressBookPath,
+    showNavBar: true,
     showCartFooter: false,
   },
   {
