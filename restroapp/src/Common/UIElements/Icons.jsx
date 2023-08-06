@@ -20,6 +20,9 @@ import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRigh
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import MapsHomeWorkRoundedIcon from "@mui/icons-material/MapsHomeWorkRounded";
+import EmailIcon from "@mui/icons-material/Email";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 
 const IconComponent = ({ name, color, ...rest }) => {
   const getIcon = (iconName) => {
@@ -64,6 +67,12 @@ const IconComponent = ({ name, color, ...rest }) => {
         return <IndeterminateCheckBoxOutlinedIcon />;
       case "ArrowCircleRightOutlinedIcon":
         return <ArrowCircleRightOutlinedIcon />;
+      case "MapsHomeWorkRoundedIcon":
+        return <MapsHomeWorkRoundedIcon />;
+      case "EmailIcon":
+        return <EmailIcon />;
+      case "CheckCircleOutlineOutlinedIcon":
+        return <CheckCircleOutlineOutlinedIcon />;
       case "edit":
         return "edit";
       case "delete":
